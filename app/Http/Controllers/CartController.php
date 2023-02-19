@@ -10,4 +10,8 @@ class CartController extends Controller
     {
         return view('pages.cart');
     }
+    public function success()
+    {
+        return view('pages.success');
+    }
 }
