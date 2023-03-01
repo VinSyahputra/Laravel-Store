@@ -39,6 +39,11 @@ Route::get('/dashboard/transactions/{id}', [DashboardTransactionController::clas
 Route::get('/dashboard/settings', [DashboardSettingController::class, 'store'])->name('dashboard-setting-store');
 Route::get('/dashboard/account', [DashboardSettingController::class, 'account'])->name('dashboard-setting-account');
 
+// ->middleware(['auth', 'admin'])
+Route::prefix('admin')->namespace('Admin')->group(function () {
+    Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin-dashboard');
+});
+
 Route::get('/debug-sentry', function () {
     throw new Exception('My first Sentry error!');
 });
