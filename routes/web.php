@@ -12,6 +12,9 @@ use App\Http\Controllers\DashboardProductController;
 use App\Http\Controllers\DashboardSettingController;
 use App\Http\Controllers\DashboardTransactionController;
 
+use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminDashboardController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,9 +43,11 @@ Route::get('/dashboard/settings', [DashboardSettingController::class, 'store'])-
 Route::get('/dashboard/account', [DashboardSettingController::class, 'account'])->name('dashboard-setting-account');
 
 // ->middleware(['auth', 'admin'])
-Route::prefix('admin')->namespace('Admin')->group(function () {
-    Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin-dashboard');
-});
+Route::prefix('admin')
+    ->group(function () {
+        Route::get('/', [AdminDashboardController::class, 'index'])->name('admin-dashboard');
+        Route::resource('category', AdminCategoryController::class);
+    });
 
 Route::get('/debug-sentry', function () {
     throw new Exception('My first Sentry error!');
