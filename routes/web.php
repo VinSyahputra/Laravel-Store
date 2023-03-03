@@ -8,10 +8,11 @@ use App\Http\Controllers\DetailController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\AdminDashboardController;
 
+use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\DashboardProductController;
 use App\Http\Controllers\DashboardSettingController;
 use App\Http\Controllers\DashboardTransactionController;
@@ -49,6 +50,7 @@ Route::prefix('admin')
         Route::get('/', [AdminDashboardController::class, 'index'])->name('admin-dashboard');
         Route::resource('category', AdminCategoryController::class);
         Route::resource('user', AdminUserController::class);
+        Route::resource('product', AdminProductController::class);
     });
 
 Route::get('/debug-sentry', function () {
