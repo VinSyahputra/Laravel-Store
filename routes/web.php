@@ -15,6 +15,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\DashboardProductController;
 use App\Http\Controllers\DashboardSettingController;
+use App\Http\Controllers\AdminProductGalleryController;
 use App\Http\Controllers\DashboardTransactionController;
 
 /*
@@ -51,6 +52,7 @@ Route::prefix('admin')
         Route::resource('category', AdminCategoryController::class);
         Route::resource('user', AdminUserController::class);
         Route::resource('product', AdminProductController::class);
+        Route::resource('product-gallery', AdminProductGalleryController::class);
     });
 
 Route::get('/debug-sentry', function () {
